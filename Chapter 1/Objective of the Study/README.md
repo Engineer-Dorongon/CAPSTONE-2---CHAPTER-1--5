@@ -6,7 +6,7 @@ To evaluate the performance, usability, and workability of **SENSEY: An Intellig
 ### Specific Objectives
 To satisfy the general objective and provide the empirical evidence required for system evaluation, the study will fulfill the following measurable milestones:
 
-1. **To evaluate the accuracy and stability** of the SENSEY blind assistive wearable device in monitoring student postures and classroom behaviors across varying seating rows and column positions for the **visually impaired teacher**.
+1. **To evaluate the accuracy and precision** of the SENSEY blind assistive wearable device in monitoring student postures and classroom behaviors across varying seating rows and column positions for the **visually impaired teacher**.
 2. **To measure the reliability** of the SENSEY blind assistive wearable device in detecting classroom obstacles and distinguishing walkable paths across its physical lanes (Left, Center, Right).
 3. **To determine if there is** a significant improvement in the **visually impaired teacher's** navigation safety, mobility, and spatial awareness when utilizing the SENSEY system compared to traditional methods.
 
@@ -56,8 +56,8 @@ Below is the detailed methodological analysis proving how each objective satisfi
 * **Guideline Compliance (Objective Guidelines - Slide 13):** The general objective is written as a direct, word-for-word reiteration of your approved research title (*"SENSEY: An Intelligent Wearable Aid..."*). This satisfies the administrative guidelines of university-level thesis defense panels, ensuring that the scope of the study does not drift from what was officially approved.
 
 ### **Analysis of Specific Objective 1 (Student Behavior Monitoring)**
-* **SOP Symmetrical Alignment (Slide 13):** This objective is a direct, parallel translation of **SOP Question 1**. It swaps the question phrase *"How accurate and stable is..."* with the active, measurable engineering infinitive **"To evaluate the accuracy and stability of..."** and keeps the rest of the sentence identical.
-* **Statistical Measurability (Title Defense Guidelines):** It targets the core software performance of your NPU tracking code. By evaluating accuracy and stability across your proposed 480-sample 3x3 seating grid, you generate the concrete data required to calculate the **Behavior Recognition Rate (%)** and **Behavior Error Rate (%)** (adapted from Page 11 of your alumni resources).
+* **SOP Symmetrical Alignment (Slide 13):** This objective is a direct, parallel translation of **SOP Question 1**. It swaps the question phrase *"How accurate and precise is..."* with the active, measurable engineering infinitive **"To evaluate the accuracy and precision of..."** and keeps the rest of the sentence identical.
+* **Statistical Measurability (Title Defense Guidelines):** It targets the core software performance of your NPU tracking code. By evaluating accuracy and precision across your proposed 480-sample 3x3 seating grid, you generate the concrete data required to calculate the **Behavior Recognition Rate (%)** and **Behavior Error Rate (%)** (adapted from Page 11 of your alumni resources).
 
 ### **Analysis of Specific Objective 2 (Obstacle & Walkable Path Detection)**
 * **SOP Symmetrical Alignment (Slide 13):** This objective is a direct, parallel translation of **SOP Question 2**. It swaps the question phrase *"How reliable is..."* with the active engineering infinitive **"To measure the reliability of..."** and keeps the rest of the sentence identical.
