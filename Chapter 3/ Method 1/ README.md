@@ -108,7 +108,6 @@ To analyze the specific effects of the camera's horizontal viewing angles, radia
 #### **1. Center Column Performance (Direct $0^\circ$ Angle — $N_{Center} = 480$):**
 $$R_{Success\_Center} = \frac{\sum TP_{Center}}{480} \times 100$$
 $$R_{Failure\_Center} = \frac{\sum (FP_{Center} + FN_{Center})}{480} \times 100$$
-*(Note: Sub-rates $R_{Err\_Center}$ and $R_{Miss\_Center}$ are also extracted from $FP$ and $FN$ accordingly).*
 
 #### **2. Left Column Performance (Oblique Angle — $N_{Left} = 480$):**
 $$R_{Success\_Left} = \frac{\sum TP_{Left}}{480} \times 100$$
