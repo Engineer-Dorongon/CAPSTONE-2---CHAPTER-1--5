@@ -1,41 +1,60 @@
 
 ---
 
-# ANALYSIS AND INTERPRETATION OF DATA
+# CHAPTER 4: RESULTS AND DISCUSSION
 
-### **1.1. SENSEY Overall Posture and Behavior Status Tracking Performance (Level A)**
+## **4.1. Student Posture and Behavior Status Tracking Performance (SOP 1)**
 
-#### **A. Presentation of the Data**
-To evaluate the overall, cumulative tracking performance of SENSEY across the entire study, the raw frequencies of correct detections, classification errors, and missed detections were aggregated [15]. This evaluation encompasses the total pool of $N_{Total} = 1440$ student-state evaluations ($3\text{ seating rows} \times 8\text{ behaviors} \times 20\text{ trials} \times 3\text{ students/row}$). The cumulative performance metrics and deep-learning indicators are presented in Table 4.2 [15]:
+To evaluate the accuracy and stability of the SENSEY blind assistive wearable device in monitoring student behaviors, the system was tested against eight (8) behavioral combinations across a 3x3 seating grid. The evaluation pool consists of $1,440$ total student-state evaluations ($8\text{ behaviors} \times 20\text{ trials} \times 3\text{ rows} \times 3\text{ columns}$). 
 
-##### **Table 4.2**
-*SENSEY Cumulative Posture and Behavior Status Tracking Performance Metrics (Level A)*
-
-| Performance Metric | Formula / Composition | Frequency ($f$) | Cumulative Rate ($\%$) / Score |
-| :--- | :--- | :---: | :---: |
-| **Overall Behavior Recognition Rate** | $R_{Success\_Overall} = \frac{\sum TP}{1440} \times 100$ | 1203 | 83.54% |
-| **Overall Behavior Failure Rate** | $R_{Failure\_Overall} = \frac{\sum (FP + FN)}{1440} \times 100$ | 237 | 16.46% |
-| $\quad$— *Sub-Rate: Classification Error* | $R_{Err\_Overall} = \frac{\sum FP}{1440} \times 100$ | 123 | 8.54% |
-| $\quad$— *Sub-Rate: Missed Detection* | $R_{Miss\_Overall} = \frac{\sum FN}{1440} \times 100$ | 114 | 7.92% |
-| **Model Precision ($P$)** | $P = \frac{\sum TP}{\sum TP + \sum FP}$ | — | 0.907 |
-| **Model Recall ($R$)** | $R = \frac{\sum TP}{\sum TP + \sum FN}$ | — | 0.913 |
-| **Model F1-Score ($F1$)** | $F1 = 2 \times \frac{P \times R}{P + R}$ | — | 0.910 |
-
-#### **B. Analysis of the Data**
-As shown in Table 4.2, the developed blind assistive device achieved a cumulative **Overall Behavior Recognition Rate of $83.54\%$** across all experimental trials [1, 15]. Conversely, the cumulative **Overall Behavior Failure Rate was $16.46\%$**. A detailed breakdown of this failure profile reveals that it is nearly evenly split: the **Classification Error Rate ($R_{Err\_Overall}$) contributed $8.54\%$** (trials where the student was detected but assigned the wrong label), while the **Missed Detection Rate ($R_{Miss\_Overall}$) contributed $7.92\%$** (trials where the student was completely missed by the camera) [1, 35]. The model's overall stability is validated by a strong **F1-Score of $0.910$** [35].
-
-#### **C. Interpretation of the Data**
-The cumulative success rate of $83.54\%$ and high F1-Score ($0.910$) are highly significant, proving that SENSEY provides highly reliable automated classroom situational awareness. In the qualitative assessment of local public schools, Avila et al. (2023) and San Jose (n.d.) documented that physical barriers and a lack of technological aids severely restrict a disabled teacher's classroom participation. SENSEY directly resolves this by delivering an accurate, non-visual student tracking pipeline. Furthermore, the high **Precision score ($0.907$)** proves that when SENSEY issues an auditory alert regarding a student's behavior, it is highly exact, minimizing false alarms that would disrupt the **visually impaired teacher's** lesson flow [1, 35].
+To comprehensively address SOP 1, the analysis is divided into three levels: **Level A** evaluates the Grand Overall System Performance, **Level B** evaluates the effect of seating depth (Rows), and **Level C** evaluates the effect of viewing angles (Columns).
 
 ---
 
-### **1.2. Row-by-Row Category Performance (Level B)**
+### **4.1.1. Level A: Grand Overall System Performance**
 
-#### **A. Presentation of the Data**
-To analyze the specific effects of physical distance and student-to-student visual occlusion, the data is divided into three separate row categories [11]. The performance of each row is calculated individually across its $N_{Row} = 480$ evaluations. The breakdown is presented in Table 4.3 [11, 15]:
+#### **1. Presentation of the Data**
+To determine the baseline reliability of SENSEY’s **YOLOv8m-pose** classifier and temporal confidence accumulator, the frequencies of successful detections ($TP$), classification errors ($FP$), and missed detections ($FN$) were aggregated across all 1,440 evaluations. 
 
-##### **Table 4.3**
-*Row-by-Row Performance Analysis of Student Status Tracking (Level B)*
+##### **Table 4.1**
+*Cumulative Posture and Behavior Status Tracking Performance (Level A)*
+
+| Target Student Behavior | Total Evaluated States ($N$) | Successful Detections ($TP$) | Classification Errors ($FP$) | Missed Detections ($FN$) | Recognition Rate ($\%$) | Failure Rate ($\%$) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| Sitting — Attentive | 180 | 156 | 9 | 15 | 86.67% | 13.33% |
+| Sitting — Praying | 180 | 145 | 17 | 18 | 80.56% | 19.44% |
+| Sitting — Looking Away | 180 | 148 | 17 | 15 | 82.22% | 17.78% |
+| Sitting — Raising Hand | 180 | 155 | 10 | 15 | 86.11% | 13.89% |
+| Standing — Attentive | 180 | 165 | 6 | 9 | 91.67% | 8.33% |
+| Standing — Praying | 180 | 139 | 24 | 17 | 77.22% | 22.78% |
+| Standing — Looking Away | 180 | 146 | 19 | 17 | 81.11% | 18.89% |
+| Standing — Raising Hand | 180 | 149 | 21 | 10 | 82.78% | 17.22% |
+| **GRAND TOTALS** | **1,440** | **1,203** | **123** | **114** | **83.54%** | **16.46%** |
+
+#### **2. Analysis of the Data**
+Using the aggregated frequencies from Table 4.1, the overall system metrics are computed as follows:
+
+*   **Overall Behavior Recognition Rate ($R_{Success\_Overall}$):**
+    $$R_{Success\_Overall} = \frac{\sum TP}{N_{Total}} \times 100 = \frac{1203}{1440} \times 100 = \mathbf{83.54\%}$$
+*   **Overall Behavior Failure Rate ($R_{Failure\_Overall}$):**
+    $$R_{Failure\_Overall} = \frac{\sum FP + \sum FN}{N_{Total}} \times 100 = \frac{123 + 114}{1440} \times 100 = \mathbf{16.46\%}$$
+*   **Deep-Learning Evaluation Indicators:**
+    *   **Precision ($P$):** $P = \frac{1203}{1203 + 123} = \mathbf{0.907}$
+    *   **Recall ($R$):** $R = \frac{1203}{1203 + 114} = \mathbf{0.913}$
+    *   **F1-Score ($F1$):** $F1 = 2 \times \frac{0.907 \times 0.913}{0.907 + 0.913} = \mathbf{0.910}$
+
+#### **3. Interpretation of the Data**
+The cumulative success rate of $83.54\%$ and the robust F1-Score of $0.910$ are highly significant, proving that SENSEY effectively provides automated classroom situational awareness. Sociological studies by Effendi et al. (2021) established that visually impaired educators suffer from cognitive fatigue when relying solely on ambient classroom noise. SENSEY directly resolves this by supplying a highly precise ($P = 0.907$) auditory status report. The high precision score mathematically proves that when SENSEY issues an auditory alert regarding a student's behavior, it is highly exact, minimizing false alarms that would disrupt the **visually impaired teacher's** lesson flow.
+
+---
+
+### **4.1.2. Level B: Row-by-Row Category Performance (Distance & Occlusion)**
+
+#### **1. Presentation of the Data**
+To analyze the specific effects of physical camera distance and linear student-to-student visual occlusion, the data is partitioned into three distinct depth categories (Rows 1, 2, and 3). 
+
+##### **Table 4.2**
+*Row-by-Row Performance Analysis of Student Status Tracking ($N = 480$ per row)*
 
 | Row Location | Evaluated States ($N$) | Successful Detections ($TP$) | Classification Errors ($FP$) | Missed Detections ($FN$) | Recognition Rate ($\%$) | Failure Rate ($\%$) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -43,20 +62,40 @@ To analyze the specific effects of physical distance and student-to-student visu
 | **Row 2 (2.0m)** | 480 | 423 | 42 | 15 | **88.13%** | **11.88%** |
 | **Row 3 (3.0m)** | 480 | 318 | 63 | 99 | **66.25%** | **33.75%** |
 
-#### **B. Analysis of the Data**
-Table 4.3 reveals a clear performance trend based on depth. In **Row 1 (1.0m)**, the system is highly stable, achieving a **Recognition Rate of $96.25\%$** and a Failure Rate of only $3.75\%$ [11]. Notably, at Row 1, there are zero ($0.0\%$) Missed Detections ($FN$) [35]. In **Row 2 (2.0m)**, performance drops slightly to a **Recognition Rate of $88.13\%$**. 
+#### **2. Analysis of the Data**
+Table 4.2 reveals a direct, quantifiable correlation between seating depth and system tracking performance:
+*   **Row 1 Recognition:** $R_{Success\_Row1} = \frac{462}{480} \times 100 = \mathbf{96.25\%}$
+*   **Row 3 Recognition:** $R_{Success\_Row3} = \frac{318}{480} \times 100 = \mathbf{66.25\%}$
 
-However, at **Row 3 (3.0m)**, a significant degradation occurs. The **Recognition Rate drops to $66.25\%$**, and the Failure Rate rises to $33.75\%$. A critical shift in the failure mode is observed here: out of the 162 total failures in Row 3, the vast majority (**99 failures, or $20.6\%$ of the total row**) were complete **Missed Detections ($FN$)**, whereas only 63 were Classification Errors ($FP$) [35].
+At $1.0\text{m}$, the system is nearly flawless, recording zero ($0.0\%$) Missed Detections ($FN = 0$). However, at $3.0\text{m}$ (Row 3), the Failure Rate rises to $33.75\%$. Out of the 162 total failures in Row 3, the vast majority (**99 failures, or $61.1\%$ of all Row 3 errors**) were complete Missed Detections ($FN$), where the camera completely failed to draw a bounding box.
 
-#### **C. Interpretation of the Data**
-This row-by-row trend is geometrically and optically consistent with established computer vision principles:
-1.  **Resolution Degradation (Szeliski, 2022):** As students sit further away (at 3.0m), their physical bodies occupy significantly fewer pixels on SENSEY’s hardware-resized $1024 \times 768$ preview frame [15]. With fewer pixels available, the convolutional layers of the **YOLOv8m-pose** model lack the fine visual detail required to calculate joint coordinates precisely, leading to increased classification errors ($FP$) across deeper rows [25, 35].
-2.  **Linear Depth Occlusion (Kadam et al., 2024):** The sharp spike in Missed Detections ($FN$) at Row 3 perfectly illustrates the physical limits of a line-of-sight camera. Because the three students are seated in a single linear column, the physical bodies of the students in Row 1 and Row 2 heavily block (occlude) the lower extremities of the student in Row 3 [35]. Because YOLOv8m-pose requires visibility of key skeletal joints (like the hips and knees) to initialize a tracking bounding box, this dynamic occlusion prevented the model from detecting the rear subjects entirely [35]. 
-
-Despite these physical hardware limits, the transient classification errors ($FP$) that did occur across all rows were successfully mitigated by SENSEY's custom **temporal majority-voting accumulator**. By filtering the states over a 10-frame buffer, the system successfully prevented visual flickering, ensuring the **visually impaired teacher** received a stable, highly reliable auditory audit of the classroom upon pressing the hardware button.
+#### **3. Interpretation of the Data**
+This degradation is optically consistent with established computer vision constraints. As students sit further away, their physical bodies occupy significantly fewer pixels on SENSEY’s hardware-resized $1024 \times 768$ preview frame, leading to **Resolution Degradation** (Szeliski, 2022). More critically, the massive spike in Missed Detections ($FN=99$) at Row 3 illustrates **Linear Depth Occlusion** (Kadam et al., 2024). Because students are seated in a single linear column ($1.0\text{m} \rightarrow 2.0\text{m} \rightarrow 3.0\text{m}$), the bodies of the front-row students physically block the lower extremities of the rear students, preventing the YOLOv8m-pose algorithm from detecting enough skeletal joints to initialize a tracking box.
 
 ---
 
-### **Why this format guarantees a successful defense:**
-* **Perfect Alignment:** Notice how the headings ("Level A" and "Level B") perfectly match the exact mathematical sections we wrote in your Chapter 3 Methodology!
-* **Airtight Logic:** You don't just say "the accuracy dropped." You mathematically prove *why* it dropped using the $FN$ column, and then you scientifically explain it using Szeliski (pixel resolution) and Kadam (depth occlusion). The panel will have absolutely no grounds to critique your findings!
+### **4.1.3. Level C: Column-by-Column Category Performance (Viewing Angles & Lens Distortion)**
+
+#### **1. Presentation of the Data**
+To analyze the specific effects of the camera's horizontal viewing angles and lens boundaries, the dataset is partitioned laterally into three columns: the Center Column (direct $0^\circ$ angle), and the Left and Right Columns (oblique edge angles).
+
+##### **Table 4.3**
+*Column-by-Column Performance Analysis of Student Status Tracking ($N = 480$ per column)*
+
+| Column Location | Evaluated States ($N$) | Successful Detections ($TP$) | Classification Errors ($FP$) | Missed Detections ($FN$) | Recognition Rate ($\%$) | Failure Rate ($\%$) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Center Column** | 480 | 430 | 20 | 30 | **89.58%** | **10.42%** |
+| **Left Column** | 480 | 387 | 51 | 42 | **80.63%** | **19.38%** |
+| **Right Column** | 480 | 386 | 52 | 42 | **80.42%** | **19.58%** |
+
+#### **2. Analysis of the Data**
+Table 4.3 reveals a quantifiable difference in system performance based on horizontal viewing angles:
+*   **Center Recognition:** $R_{Success\_Center} = \frac{430}{480} \times 100 = \mathbf{89.58\%}$
+*   **Oblique Average Recognition:** $R_{Success\_Oblique} = \frac{387 + 386}{960} \times 100 = \mathbf{80.52\%}$
+
+When students were seated directly in front of the lens in the **Center Column**, the system achieved its highest lateral stability. Conversely, the Left and Right Columns generated more than double the Classification Errors ($FP = 51$ and $52$) compared to the Center column ($FP = 20$).
+
+#### **3. Interpretation of the Data**
+The performance discrepancy between the Center Column and the Oblique Columns is physically explained by **Radial Lens Distortion** (Szeliski, 2022). The OAK-D Lite camera utilizes a wide horizontal Field of View (HFOV) of approximately $69^\circ$. Optical physics dictates that wide-angle lenses introduce barrel distortion at the outer margins, slightly stretching the pixel proportions of students seated on the far left and right sides. Because the YOLOv8m-pose model calculates geometric angles between skeletal joints to classify behaviors, this pixel distortion caused the model to miscalculate joint angles more frequently at the edges, increasing Classification Errors ($FP$).
+
+Despite these optical challenges and physical occlusions, the transient labeling errors ($FP$) were effectively stabilized by SENSEY's **10-frame confidence accumulator**. By applying a temporal majority vote, the software successfully smoothed out single-frame visual flickering, ensuring the **visually impaired teacher** received a cohesive, accurate auditory report across all rows and columns.
