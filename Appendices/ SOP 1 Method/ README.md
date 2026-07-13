@@ -81,3 +81,51 @@ During your final capstone defense, these three appendix ledgers serve as your p
 [12] J. R. Alayon, V. G. D. Corciega, N. M. L. Genebago, A. B. A. Hernandez, C. R. C. Labitoria, and R. E. Tolentino, "Design of Wearable Wrist Haptic Device for Blind Navigation using Microsoft Kinect for Xbox 360," in *Proceedings of the 2020 4th International Conference on Trends in Electronics and Informatics (ICOEI)*, 2020, pp. 1005–1010, doi: 10.1109/ICOEI48184.2020.9143005.
 
 [35] P. Kadam, G. Fang, Y. Amirabdollahian, J. J. Zou, and P. Holthaus, "Hand Pose Detection Using YOLOv8-pose," School of Engineering, Design and Built Environment, Western Sydney University & Robotics Research Group, University of Hertfordshire, Technical Report, 2024. [Online]. Available: https://uhra.herts.ac.uk/id/eprint/25619/1/paper_17.pdf
+
+
+---
+### OPTION 2, 24 TABLES FORMAT
+---
+Here is an example of how **one of the 24 individual tables** would look if you choose to split them by both **Row Location** and **Specific Behavior**. 
+
+For this example, we will look at **Sitting—Praying Behavior at Row 2 (2.0m)**, as its raw trial data contains a realistic mix of successes ($TP$), classification errors ($FP$), and missed detections ($FN$).
+
+---
+
+### **Table A.1**
+*Raw Trial Log for Sitting—Praying Behavior — Row 2 (2.0m)*
+
+| Trial Number | Actual Student Posture and Action | SENSEY Detected Posture and Action | Operational Outcome |
+| :---: | :--- | :--- | :--- |
+| **1** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **2** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **3** | Sitting — Praying | Sitting — Looking Away | False Positive ($FP$) |
+| **4** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **5** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **6** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **7** | Sitting — Praying | None (No detection) | False Negative ($FN$) |
+| **8** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **9** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **10** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **11** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **12** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **13** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **14** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **15** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **16** | Sitting — Praying | Sitting — Attentive | False Positive ($FP$) |
+| **17** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **18** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **19** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **20** | Sitting — Praying | Sitting — Praying | True Positive ($TP$) |
+| **TOTAL** | **20 Runs** | **TP: 17 \| FP: 2 \| FN: 1** | **Success Rate: 85.0%** |
+
+---
+
+### **Comparison to Help You Decide:**
+
+* **The 24-Table Option (Like the table above):**
+  * *Pros:* It is incredibly detailed and easy to read. It documents every single frame's exact misclassification (e.g., showing that in Trial 3, the student was actually *praying* but the system mislabeled them as *looking away*). It looks highly detailed for a system design appendix.
+  * *Cons:* It takes up a lot of pages. Since each table has 20 rows, putting 24 of these in your Appendix will take up around **12 to 15 pages** of your document.
+* **The 3-Master-Ledger Option (Our previous design):**
+  * *Pros:* It is extremely compact and professional. It condenses all 480 trials into just **3 master tables** (taking up only 3 pages), which keeps your Appendix clean and easy to browse.
+  * *Cons:* It is more abbreviated, showing only the final codes (`TP`, `FP`, `FN`) rather than listing the exact incorrect names for every single trial.
