@@ -1,20 +1,20 @@
 
+---
+
 # **STATISTICAL TREATMENT OF DATA (SOP 1)**
 
-To analyze and interpret the student posture and behavior tracking performance of the developed SENSEY system, the raw experimental data gathered in Protocol 1 will undergo formal descriptive statistical treatment. 
+To analyze and interpret the student posture and behavior tracking performance of SENSEY, the raw experimental data gathered in Protocol 1 will undergo formal descriptive statistical treatment. 
 
 Because the evaluation aims to describe and organize the visual status-tracking capabilities of the hardware-software prototype under specific classroom conditions rather than compare separate human populations, **Descriptive Statistics** are applied [15]. 
 
 To evaluate SENSEY's performance both conceptually (as a whole system) and operationally (divided by row distance), the study calculates the **Weighted Arithmetic Mean (Aggregated Frequency Method)** across two distinct analytical levels:
 
----
-
 ### **Level A: The Overall System Performance (Whole Study — $N_{Total} = 1440$)**
 
-To determine the cumulative success and failure rates of the student tracking module across the entire study, the raw frequencies of correct detections, labeling errors, and missed detections across all 24 configurations are aggregated over the complete $N_{Total} = 1440$ evaluation pool:
+To determine the cumulative success and failure rates of the student tracking module across the entire study, the raw frequencies of correct detections, labeling errors, and missed detections across all 24 configurations are aggregated over the complete $N_{Total} = 1440$ evaluation pool ($3\text{ rows} \times 8\text{ behaviors} \times 20\text{ trials} \times 3\text{ students/row}$):
 
 #### **A. Overall Average Behavior Recognition Rate / Success Rate ($R_{Success\_Overall}$):**
-This metric measures SENSEY's cumulative success rate in both detecting student presence and correctly identifying their active posture and behavior. It is calculated by dividing the sum of all True Positives ($TP$) across all 24 configurations by the total evaluation pool ($N_{Total} = 1440$) [1, 35]:
+This metric measures SENSEY's cumulative success rate in both detecting student presence and correctly identifying their active posture and behavior. It is calculated as [1, 35]:
 
 $$R_{Success\_Overall} = \frac{\sum_{i=1}^{24} TP_i}{1440} \times 100$$
 
@@ -27,30 +27,52 @@ $$R_{Failure\_Overall} = \frac{\sum_{i=1}^{24} (FP_i + FN_i)}{1440} \times 100$$
 
 Where $\sum_{i=1}^{24} (FP_i + FN_i)$ is the sum of all classification errors and missed detections across the 24 configurations in Table 4.1.
 
-$$\text{Note: } R_{Success\_Overall} + R_{Failure\_Overall} = 100.0\%$$
+#### **C. Overall Average Behavior Classification Error Rate ($R_{Err\_Overall}$):**
+This metric measures the sub-rate of cumulative failures caused strictly by SENSEY successfully detecting a student's presence but assigning the incorrect postural or behavioral label to their action (False Positives) [1]. It is calculated as:
+
+$$R_{Err\_Overall} = \frac{\sum_{i=1}^{24} FP_i}{1440} \times 100$$
+
+#### **D. Overall Average Missed Detection Rate ($R_{Miss\_Overall}$):**
+This metric measures SENSEY's cumulative failure rate in detecting student presence due to distance limits or depth occlusions (False Negatives), verified when a student physically exists but is omitted from the spoken audio audit [35]. It is calculated as:
+
+$$R_{Miss\_Overall} = \frac{\sum_{i=1}^{24} FN_i}{1440} \times 100$$
+
+$$\text{Note: } R_{Success\_Overall} + R_{Failure\_Overall} = 100.0\%, \text{ where } R_{Failure\_Overall} = R_{Err\_Overall} + R_{Miss\_Overall}$$
 
 ---
 
 ### **Level B: The Row-by-Row Category Performance ($N_{Row} = 480$ each)**
 
-To analyze the specific effects of distance and student-to-student occlusion, the data is divided into three separate row categories [11]. The performance of each row is calculated individually across its eight (8) behavior configurations, representing $480$ evaluations per row ($8\text{ behaviors} \times 20\text{ trials} \times 3\text{ students}$):
+To analyze the specific effects of distance and student-to-student occlusion, the data is divided into three separate row categories [11]. The performance of each row is calculated individually across its eight (8) behavior configurations, representing $480$ evaluations per row ($8\text{ behaviors} \times 20\text{ trials} \times 3\text{ students}$) [11]:
 
-#### **A. Front Row Category Performance (Row 1 at 1.0m — $N_{Row1} = 480$):**
+#### **1. Front Row Category Performance (Row 1 at 1.0m — $N_{Row1} = 480$):**
 $$R_{Success\_Row1} = \frac{\sum_{i=1}^{8} TP_{Row1,i}}{480} \times 100$$
 
 $$R_{Failure\_Row1} = \frac{\sum_{i=1}^{8} (FP_{Row1,i} + FN_{Row1,i})}{480} \times 100$$
 
-#### **B. Middle Row Category Performance (Row 2 at 2.0m — $N_{Row2} = 480$):**
+$$R_{Err\_Row1} = \frac{\sum_{i=1}^{8} FP_{Row1,i}}{480} \times 100$$
+
+$$R_{Miss\_Row1} = \frac{\sum_{i=1}^{8} FN_{Row1,i}}{480} \times 100$$
+
+#### **2. Middle Row Category Performance (Row 2 at 2.0m — $N_{Row2} = 480$):**
 $$R_{Success\_Row2} = \frac{\sum_{i=1}^{8} TP_{Row2,i}}{480} \times 100$$
 
 $$R_{Failure\_Row2} = \frac{\sum_{i=1}^{8} (FP_{Row2,i} + FN_{Row2,i})}{480} \times 100$$
 
-#### **C. Back Row Category Performance (Row 3 at 3.0m — $N_{Row3} = 480$):**
+$$R_{Err\_Row2} = \frac{\sum_{i=1}^{8} FP_{Row2,i}}{480} \times 100$$
+
+$$R_{Miss\_Row2} = \frac{\sum_{i=1}^{8} FN_{Row2,i}}{480} \times 100$$
+
+#### **3. Back Row Category Performance (Row 3 at 3.0m — $N_{Row3} = 480$):**
 $$R_{Success\_Row3} = \frac{\sum_{i=1}^{8} TP_{Row3,i}}{480} \times 100$$
 
 $$R_{Failure\_Row3} = \frac{\sum_{i=1}^{8} (FP_{Row3,i} + FN_{Row3,i})}{480} \times 100$$
 
-$$\text{Note: } R_{Success\_Row} + R_{Failure\_Row} = 100.0\% \text{ for each individual row.}$$
+$$R_{Err\_Row3} = \frac{\sum_{i=1}^{8} FP_{Row3,i}}{480} \times 100$$
+
+$$R_{Miss\_Row3} = \frac{\sum_{i=1}^{8} FN_{Row3,i}}{480} \times 100$$
+
+$$\text{Note: } R_{Success\_Row} + R_{Failure\_Row} = 100.0\%, \text{ where } R_{Failure\_Row} = R_{Err\_Row} + R_{Miss\_Row}$$
 
 ---
 
