@@ -1,9 +1,3 @@
-Here is the finalized **SOP 3** and its matching **Objective 3**. 
-
-By replacing "traditional methods" with **"traditional mobility benchmarks"**, you completely avoid the clunky *"2017 baseline"* phrasing inside the research questions. In your *Definition of Terms* (Chapter 1), you will simply define *"traditional mobility benchmarks"* as your department's established baseline metrics (specifically the $377\text{-second}$ travel time). 
-
-This is highly elegant, academically professional, and perfectly preserves your preferred sentence structure:
-
 ---
 
 ### **STATEMENT OF THE PROBLEM (SOP 3)**
