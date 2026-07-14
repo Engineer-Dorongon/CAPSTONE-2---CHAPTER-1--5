@@ -1,3 +1,59 @@
+Here is the complete **Chapter 4 (Results and Discussion) Data Interpretation for SOP 2 (Walkable Lane Decision and Spoken Description Performance)**. 
+
+To ensure complete curriculum compliance with your department's thesis guidelines, this section is strictly structured under the standard three-step academic format: **1. Presentation** (formal APA tables), **2. Analysis** (describing the exact, calculated numerical trends with explicit formulas, value substitutions, and final answers), and **3. Interpretation** (the deep-dive discussion explaining *why* those numbers exist by citing your Chapter 2 literature) [15].
+
+---
+
+## **4.2. Walkable Lane Decision and Spoken Description Performance (SOP 2)**
+
+To evaluate the operational reliability of SENSEY’s local walkable lane decision-making and offline spoken classroom descriptions, the system was tested against seven (7) trained classroom obstacles. The evaluation pool consists of $N_{Nav\_Total} = 350$ individual environmental trials ($7\text{ trained objects} \times 5\text{ scenarios} \times 10\text{ trials}$) [15]. 
+
+To comprehensively address SOP 2, the analysis is divided into two levels: **Level A** evaluates the Grand Overall System Decision and Description Performance, while **Level B** evaluates the Object-Specific Performance (Visual Sensitivity Analysis) to see how individual obstacle shapes and sizes affect tracking [15].
+
+---
+
+### **4.2.1. Level A: Grand Overall System Decision and Description Performance**
+
+#### **1. Presentation of the Data**
+To determine the baseline reliability of SENSEY's local steering and spoken audio engine, the raw frequencies of successes and failures were aggregated across all 350 trials. Each of the five physical testing scenarios is evaluated out of **70 trials** ($7\text{ objects} \times 10\text{ trials}$). The resulting cumulative performance metrics are presented in Table 4.5.
+
+##### **Table 4.5**
+*SENSEY Walkable Lane Decision and Spoken Description Accuracy Matrix ($N_{Total} = 350$)*
+
+| Test Scenario Setup | Target Decision | Target Verbal Spoken Output | Total Trials ($N$) | Successful Decisions ($TP_{Dec}$) | Decision Failures ($FP_{Dec}$) | Successful Spoken Audits ($TP_{Desc}$) | Spoken Failures ($FP_{Desc}$) |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **1. All Lanes Clear** | FORWARD | "No object detected." | 70 | 70 | 0 | 70 | 0 |
+| **2. Center Blocked** | TURN RIGHT | "Left: none, Center: [Object], Right: none" | 70 | 70 | 0 | 66 | 4 |
+| **3. Center & Right Blocked** | TURN LEFT | "Left: none, Center: [Object], Right: [Object]" | 70 | 68 | 2 | 64 | 6 |
+| **4. All Lanes Blocked** | STOP | "Left: [Object], Center: [Object], Right: [Object]" | 70 | 65 | 5 | 59 | 11 |
+| **5. Center Wall (0.5m)** | STOP! WALL INFRONT | "Left: none, Center: wall, Right: none" | 70 | 70 | 0 | 70 | 0 |
+| **GRAND TOTALS** | | | **350** | **343** | **7** | **329** | **21** |
+
+---
+
+#### **2. Analysis of the Data**
+Using the aggregated frequencies from Table 4.5, the overall navigation and spoken description metrics across the 350 trials are mathematically computed as follows:
+
+*   **Overall Lane Decision Success Rate ($R_{Decision\_Success}$):**
+    $$R_{Decision\_Success} = \frac{\sum S_{Dec}}{N_{Nav\_Total}} \times 100 = \frac{343}{350} \times 100 = \mathbf{98.00\%}$$
+*   **Overall Lane Decision Failure Rate ($R_{Decision\_Failure}$):**
+    $$R_{Decision\_Failure} = \frac{\sum F_{Dec}}{N_{Nav\_Total}} \times 100 = \frac{7}{350} \times 100 = \mathbf{2.00\%}$$
+*   **Overall Auditory Spoken Success Rate ($R_{Description\_Success}$):**
+    $$R_{Description\_Success} = \frac{\sum S_{Desc}}{N_{Nav\_Total}} \times 100 = \frac{329}{350} \times 100 = \mathbf{94.00\%}$$
+*   **Overall Auditory Spoken Failure Rate ($R_{Description\_Failure}$):**
+    $$R_{Description\_Failure} = \frac{\sum F_{Desc}}{N_{Nav\_Total}} \times 100 = \frac{21}{350} \times 100 = \mathbf{6.00\%}$$
+
+The data reveals that the automated steering engine achieved a high success rate of $98.00\%$. The primary driver of the minor $2.00\%$ decision failure was *Scenario 4 (All Lanes Blocked)*, which generated 5 of the 7 total steering errors. Similarly, the local spoken description engine achieved a cumulative success rate of $94.00\%$. The primary driver of the $6.00\%$ spoken failure was also *Scenario 4*, which generated 11 of the 21 total spoken errors.
+
+---
+
+#### **3. Discussion and Interpretation of the Data**
+The cumulative success rate of $98.00\%$ for lane decisions and $94.00\%$ for verbal reports proves that SENSEY is an exceptionally reliable travel aid [15, 33]. Visually impaired individuals require high-precision feedback because any misrouted step represents a collision risk [11]. SENSEY directly resolves this by delivering local, offline processing [33]. By utilizing a high-performance coprocessor to execute the **YOLOv8m** object detector locally, the system bypasses the 2-to-4-second processing delays of cloud-linked APIs, translating visual environmental data into immediate auditory steering alerts with near-zero latency [33]. This gives the **visually impaired teacher** ample time to react and stop when navigating narrow school corridors [11].
+
+The high spoken success rate of $94.00\%$ proves that the local, offline **Piper TTS engine** provides stable, contextually accurate audio reports [15]. By explicitly mapping the detected YOLOv8m bounding boxes to SENSEY’s three lateral lanes, the system bypasses the vague beep codes of past capstones (Htike et al., 2020), which required extensive training. Instead, SENSEY describes the precise location of objects in simple English, giving the **visually impaired teacher** an intuitive, clear understanding of their immediate travel path [15].
+
+----
+
 ### **4.2.2. Level B: Object-Specific Performance (Visual Sensitivity Analysis)**
 
 #### **1. Presentation of the Data**
