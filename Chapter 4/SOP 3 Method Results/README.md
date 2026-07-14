@@ -1,4 +1,4 @@
----
+
 
 ### **STATEMENT OF THE PROBLEM (SOP 3)**
 **Is there a significant improvement in the visually impaired teacher's navigation safety, mobility, and spatial awareness when utilizing the SENSEY system compared to traditional mobility benchmarks?**
